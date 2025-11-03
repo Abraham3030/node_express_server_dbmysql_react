@@ -3,9 +3,9 @@ require('dotenv').config();
 // const usersRouter = require('./routes/index'); // Forma 1 de mandar llamar las rutas y realizar un query a una base de db mysql
 const db = require('./db/index');// Forma 2 de mandar llamar las rutas y realizar un query a una base de db mysql usando
 const cors = require('cors');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const app = express();
-// const path = require('path');
+const path = require('path');
 
 // Middleware
 app.use(express.json());
@@ -19,6 +19,14 @@ app.use((req, res, next) => {
     console.log(`${new Date().toISOString()} ${req.method} ${req.url}`);
     next();
 });
+
+// // Servir assets del cliente bundleado (dist/client)
+// const clientDistPath = path.join(__dirname, '..', 'dist', 'client'); // cuando bundleado, __dirname apunta a server/, ajusta si necesario
+// app.use(express.static(clientDistPath));
+
+// app.get('/*splat', (req, res) => {
+//   res.sendFile(path.join(clientDistPath, 'index.html'));
+// });
 
 
 // // Serve static files from React build

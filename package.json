@@ -1,0 +1,19 @@
+{
+  "name": "project-server-client",
+  "version": "1.0.0",
+  "description": "Backend para server con lenguaje Node JS y libreria express base de datos MySQL y frontend con React JS consumiendo API REST",
+  "scripts": {
+    "start": "cd server && node app.js && cd ../client && npm run start",
+    "install": "cd server && npm i && cd ../client && npm i"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "last",
+    "version",
+    "node",
+    "server"
+  ],
+  "author": "Jose Abraham Montelongo Campos",
+  "license": "ISC"
+}

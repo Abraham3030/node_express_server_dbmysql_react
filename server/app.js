@@ -2,15 +2,10 @@ const express = require('express');
 require('dotenv').config();
 // const usersRouter = require('./routes/index'); // Forma 1 de mandar llamar las rutas y realizar un query a una base de db mysql
 const db = require('./db/index');// Forma 2 de mandar llamar las rutas y realizar un query a una base de db mysql usando
-
 const cors = require('cors');
-
-
-
-
-const app = express();
 const port = process.env.PORT || 3000;
-
+const app = express();
+// const path = require('path');
 
 // Middleware
 app.use(express.json());
@@ -24,6 +19,15 @@ app.use((req, res, next) => {
     console.log(`${new Date().toISOString()} ${req.method} ${req.url}`);
     next();
 });
+
+
+// // Serve static files from React build
+// app.use(express.static(path.join(__dirname, '../client/build')));
+
+// // Handle React routing, return all requests to React app
+// app.all('/*splat', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+// });
 
 // Routes
 app.get('/', (req, res) => {
@@ -67,5 +71,6 @@ const shutdown = () => {
 };
 process.on('SIGINT', shutdown);
 process.on('SIGTERM', shutdown);
+
 
 // module.exports = app;
